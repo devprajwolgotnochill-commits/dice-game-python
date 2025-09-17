@@ -1,7 +1,7 @@
 import random
 
-
 dice_art = {
+
     1 :"⚀",
     2 :"⚁",
     3 :"⚂",
@@ -10,10 +10,27 @@ dice_art = {
     6 :"⚅",
 }
 
-user_input = int(input("BEAT THE COMPUTER \nENTER HOW MANY DICE YOU WANT TO ROLL :"))
 computer_total = 0
 user_total = 0
 
+while True:
+    try:
+        user_input = input("BEAT THE COMPUTER \nENTER HOW MANY DICE YOU WANT TO ROLL: ")
+        
+        if user_input == "":  # If left blank
+            user_input = 6
+            break
+        
+        user_input = int(user_input)  # Try converting input to integer
+        if user_input <= 0:
+            print("Please enter a positive number.")
+            continue
+        
+        break  # Exit loop if input is valid
+    
+    except ValueError:
+        print("That's not a number. Please enter a valid number")
+        
 # print(dice[user_input])
 
 def roll_dice():
@@ -23,7 +40,7 @@ def roll_dice():
     dice = []
     
     
-    for die in range(user_input):
+    for die in range(int(user_input)):
 
         random_dice = random.randint(1 ,6)
         dice.append(random_dice)
@@ -39,7 +56,7 @@ def computer_roll():
 
     dice = []
 
-    for die in range(user_input):
+    for die in range(int(user_input)):
 
         random_dice = random.randint(1 ,6)
         dice.append(random_dice)
@@ -50,7 +67,7 @@ def computer_roll():
 
 def check_win():
     global user_total ,computer_total
-    roll_dice()
+    roll_dice() 
     computer_roll()
     if user_total > computer_total:
         print(f"You won !Your points {user_total} computer points {computer_total}")
