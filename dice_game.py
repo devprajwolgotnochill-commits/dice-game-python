@@ -76,5 +76,6 @@ def check_win():
 
         
 
-check_win()
+if __name__ == "__main__":
+    check_win()
 
